@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Boris Rukavishnikov](https://up.htmlacademy.ru/javascript/17/user/20411).
-* Наставник: `Неизвестно`.
+* Наставник: нет пока наставника браточек.
 
 ---
 
