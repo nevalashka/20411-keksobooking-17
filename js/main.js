@@ -17,7 +17,7 @@ function getRandomElement(array) {
 var avatars = [];
 
 for (var i = 1; i < 9; i++) {
-  var pic = 'img/avatars/user0' + i + '.png'
+  var pic = 'img/avatars/user0' + i + '.png';
   avatars.push(pic);
 }
 
