@@ -4,21 +4,23 @@
 var showMap = document.querySelector('.map');
 showMap.classList.remove('map--faded');
 
-var similarElement = showMap.querySelector('.map');
-
 var pinTemplate = document.querySelector('#pin')
   .content
   .querySelector('.map__pin');
 
+var MAP_WIDTH = showMap.clientWidth;
 
+var MAP_HEIGTH_MAX = 501;
+
+var MAP_HEIGTH_MIN = 130;
 
 var avatars = [];
 
 var types = ['palace', 'flat', 'house', 'bungalo'];
 
-var x = Math.floor(Math.random() * 1201);
+var x = Math.floor(Math.random() * MAP_WIDTH);
 
-var y = Math.floor(Math.random() * 501) + 130;
+var y = Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN;
 
 function getRandom(max) {
   return Math.floor(Math.random() * max);
@@ -35,64 +37,44 @@ for (var i = 1; i < 9; i++) {
 
 var pins = [
   {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
+  author: {
+    avatar: getRandomElement(avatars)
   },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
+  offer: {
+    type: getRandomElement(types)
   },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
-  },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
-  },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
-  },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
-  },
-  {
-    type: getRandomElement(types),
-    avatar: getRandomElement(avatars),
-    x: Math.floor(Math.random() * 1201),
-    y: Math.floor(Math.random() * 501) + 130
-  },
+  location: {
+    x: Math.floor(Math.random() * MAP_WIDTH),
+    y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
+  }
+}
 ];
+
+for (var i = 0; i < 9; i++) {
+    pins[i] = {
+      avatar: getRandomElement(avatars),
+      type: getRandomElement(types),
+      x: Math.floor(Math.random() * MAP_WIDTH),
+      y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
+    };
+  }
+
+
 
 var renderPin = function (pin) {
   var pinElement = pinTemplate.cloneNode(true);
-
-  pinElement.querySelector('img').src = pin.avatar;
-  pinElement.querySelector('map__pin').style.position = pin.x;
-  pinElement.querySelector('map__pin').style.position = pin.y;
-  pinElement.querySelector('map__pin').alt = pin.type;
+  pinElement.querySelector('img').setAttribute('src', pin.avatar);
+  pinElement.style.top = pin.x;
+  pinElement.style.left = pin.y;
+  pinElement.querySelector('img').setAttribute('alt', pin.type);
   return pinElement;
 }
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < pins.length; i++) {
+for (var i = 0; i < 9; i++) {
   fragment.appendChild(renderPin(pins[i]));
 }
-similarElement.appendChild(fragment);
+showMap.appendChild(fragment);
 
 
 /*
