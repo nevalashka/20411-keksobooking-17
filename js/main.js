@@ -37,7 +37,7 @@ var pins = [];
 var pins = [
   {
   author: {
-    avatar: getRandomElement(avatars)
+    avatar: avatars[i]
   },
   offer: {
     type: getRandomElement(types)
@@ -49,10 +49,10 @@ var pins = [
 }
 ];
 
-for (var i = 0; i < 9; i++) {
+for (var i = 0; i < 8; i++) {
     pins[i] = {
       author: {
-        avatar: getRandomElement(avatars)
+        avatar: avatars[i]
       },
       offer: {
         type: getRandomElement(types)
@@ -76,7 +76,7 @@ var renderPin = function (pin) {
 }
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < 9; i++) {
+for (var i = 0; i < 8; i++) {
   fragment.appendChild(renderPin(pins[i]));
 }
 showMap.appendChild(fragment);
