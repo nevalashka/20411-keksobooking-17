@@ -27,44 +27,39 @@ function getRandomElement(array) {
 var avatars = [];
 
 for (var i = 1; i < 9; i++) {
-  var pic = 'img/avatars/user0' + i + '.png'
+  var pic = 'img/avatars/user0' + i + '.png';
   avatars.push(pic);
 }
 
-
-var pins = [];
-
 var pins = [
   {
-  author: {
-    avatar: avatars[i]
-  },
-  offer: {
-    type: getRandomElement(types)
-  },
-  location: {
-    x: Math.floor(Math.random() * MAP_WIDTH),
-    y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
+    author: {
+      avatar: avatars[i]
+    },
+    offer: {
+      type: getRandomElement(types)
+    },
+    location: {
+      x: Math.floor(Math.random() * MAP_WIDTH),
+      y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
+    }
   }
-}
 ];
 
-for (var i = 0; i < 8; i++) {
-    pins[i] = {
-      author: {
-        avatar: avatars[i]
-      },
-      offer: {
-        type: getRandomElement(types)
-      },
-      location: {
-        x: Math.floor(Math.random() * MAP_WIDTH),
-        y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
-      }
-    };
-  }
-
-
+for (i = 0; i < 8; i++) {
+  pins[i] = {
+    author: {
+      avatar: avatars[i]
+    },
+    offer: {
+      type: getRandomElement(types)
+    },
+    location: {
+      x: Math.floor(Math.random() * MAP_WIDTH),
+      y: Math.floor(Math.random() * MAP_HEIGTH_MAX) + MAP_HEIGTH_MIN
+    }
+  };
+}
 
 var renderPin = function (pin) {
   var pinElement = pinTemplate.cloneNode(true);
@@ -73,17 +68,10 @@ var renderPin = function (pin) {
   pinElement.style.top = pin.location.y + 'px';
   pinElement.querySelector('img').setAttribute('alt', pin.offer.type);
   return pinElement;
-}
+};
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < 8; i++) {
+for (i = 0; i < 8; i++) {
   fragment.appendChild(renderPin(pins[i]));
 }
 showMap.appendChild(fragment);
-
-
-/*
-<template id="pin">
-    <button type="button" class="map__pin" style="left: 200px; top: 400px;"><img src="img/avatars/user07.png" width="40" height="40" draggable="false" alt="Метка объявления"></button>
-  </template>
-*/
