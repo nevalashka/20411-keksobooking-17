@@ -2,7 +2,6 @@
 
 
 var showMap = document.querySelector('.map');
-showMap.classList.remove('map--faded');
 
 var pinTemplate = document.querySelector('#pin')
   .content
@@ -15,6 +14,8 @@ var MAP_HEIGTH_MAX = 501;
 var MAP_HEIGTH_MIN = 130;
 
 var types = ['palace', 'flat', 'house', 'bungalo'];
+
+var mapClick = document.querySelector('.map__pin--main');
 
 function getRandom(max) {
   return Math.floor(Math.random() * max);
@@ -74,4 +75,11 @@ var fragment = document.createDocumentFragment();
 for (i = 0; i < 8; i++) {
   fragment.appendChild(renderPin(pins[i]));
 }
-showMap.appendChild(fragment);
+
+
+// выполнение задания 4.1
+
+mapClick.addEventListener('click', function () {
+  showMap.classList.remove('map--faded');
+  showMap.appendChild(fragment);
+});
