@@ -83,8 +83,19 @@ for (i = 0; i < 8; i++) {
   fragment.appendChild(renderPin(pins[i]));
 }
 
-
 // выполнение задания 4.1
+
+var buttonPin = document.querySelector('.map__pin--main');
+
+var x = buttonPin.style.left;
+var y = buttonPin.style.top;
+var coordinates = x + ', ' + y;
+var mapPositionInput = document.querySelector('#address');
+mapPositionInput.setAttribute('value', coordinates);
+
+
+//var xMapPin = evt.clientX;
+//var yMapPin = evt.clientY;
 
 mapClick.addEventListener('click', function (evt) {
   adForm.classList.remove('ad-form--disabled');
@@ -92,10 +103,6 @@ mapClick.addEventListener('click', function (evt) {
   showMap.appendChild(fragment);
   removeAttributes('input, select', 'disabled');
   inputsSelects[i].removeAttribute('disabled');
-  var xMapPin = evt.clientX;
-  var yMapPin = evt.clientY;
-  var mapPositionInput = document.querySelector('form[name="address"] input');
-  mapPositionInput.setAttribute('value', xMapPin, yMapPin);
-  console.log(xMapPin);
-  console.log(yMapPin);
+  //var xMapPin = evt.clientX;
+  //var yMapPin = evt.clientY;
 });
