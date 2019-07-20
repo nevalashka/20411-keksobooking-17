@@ -1,6 +1,5 @@
 'use strict';
 
-
 var showMap = document.querySelector('.map');
 
 var pinTemplate = document.querySelector('#pin')
@@ -21,7 +20,7 @@ var adForm = document.querySelector('.ad-form');
 
 var inputsSelects = adForm.querySelectorAll('input, select');
 
-var addingAttributes = function (selector, attribute, value) {
+var addingAttributes = function (selector, attribute) {
   var elements = document.querySelectorAll(selector);
   for (var i = 0; i < inputsSelects.length; i++) {
     elements[i].setAttribute(attribute, attribute);
@@ -93,16 +92,10 @@ var coordinates = x + ', ' + y;
 var mapPositionInput = document.querySelector('#address');
 mapPositionInput.setAttribute('value', coordinates);
 
-
-//var xMapPin = evt.clientX;
-//var yMapPin = evt.clientY;
-
-mapClick.addEventListener('click', function (evt) {
+mapClick.addEventListener('click', function () {
   adForm.classList.remove('ad-form--disabled');
   showMap.classList.remove('map--faded');
   showMap.appendChild(fragment);
   removeAttributes('input, select', 'disabled');
   inputsSelects[i].removeAttribute('disabled');
-  //var xMapPin = evt.clientX;
-  //var yMapPin = evt.clientY;
 });
