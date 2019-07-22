@@ -86,8 +86,11 @@ for (i = 0; i < 8; i++) {
 
 var buttonPin = document.querySelector('.map__pin--main');
 
-var x = buttonPin.style.left;
-var y = buttonPin.style.top;
+var pinHeight = Math.round(buttonPin.clientHeight);
+var pinWidth = Math.round(buttonPin.clientWidth / 2);
+
+var x = parseInt(buttonPin.style.left) + pinWidth;
+var y = parseInt(buttonPin.style.top) + pinHeight;
 var coordinates = x + ', ' + y;
 var mapPositionInput = document.querySelector('#address');
 mapPositionInput.setAttribute('value', coordinates);
